@@ -22,12 +22,12 @@ body {
   background-color: var(--main-bg);
 }
 
-header {
+.logo-container {
   background-color: var(--header-bg);
   height: 16rem;
 }
 
-header img {
+.logo-container img {
   max-width: 8.563rem;
   display: block;
   margin: 0 auto 2rem;
@@ -36,7 +36,7 @@ header img {
   animation: fromleft 2s forwards;
 }
 
-header h1 {
+.logo-container h1 {
   font-family: var(--ff-heading);
   font-weight: 400;
   color: var(--fc-header);
@@ -53,24 +53,36 @@ header h1 {
   animation: fromrigth 2s forwards;
 }
 
+.text-container {
+  font-family: var(--ff-text);
+  font-size: 1rem;
+  color: var(--fc-primary);
+  text-align: center;
+  
+  margin: 0.875rem 0 3.75rem;
+
+  border: 1px solid black;
+}
+
+.text-container p {
+  max-width: 20rem;
+  margin: 0 auto;
+  border: 1px solid purple;
+}
+
 .page {
   max-width: 20rem;
   margin: 0 auto;
   margin-bottom: 3.75rem;
-}
-
-.page .text-container {
-  font-family: var(--ff-text);
-  line-height: 0.938rem;
-  color: var(--fc-primary);
-  text-align: center;
-
-  margin: 0.875rem 0 3.75rem;
+  
+  border: 1px solid red;
 }
 
 .cards-container {
   display: grid;
   gap: 36px;
+
+  border: 1px solid green;
 }
 
 .card {
@@ -91,7 +103,7 @@ header h1 {
   transform: scale(1.1);
 }
 
-.page .card h2 {
+.card h2 {
   font-family: var(--ff-heading);
   font-weight: 400;
   font-size: 1.25rem;
@@ -111,7 +123,8 @@ header h1 {
 }
 
 @media (max-width: 350px) {
-  .page {
+  .page,
+  .text-container {
     padding: 1rem;
   }
 
