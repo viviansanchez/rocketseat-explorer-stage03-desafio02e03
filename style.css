@@ -11,6 +11,7 @@
   --header-bg: #8E9AAF;
   --header-bg-secondary: #CBC0D3;
   --main-bg: #EFF1FF;
+  --desktop-main-bg: #FFFFFF;
   --card-info-bg: #FEEAFA;
 
   --fc-primary: #23053A;
@@ -36,11 +37,16 @@ body {
   animation: fromleft 2s forwards;
 }
 
-.logo-container h1 {
+.logo-container .company-name-wrapper {
+  background-color: var(--header-bg-secondary);
+  margin-bottom: 2.25rem;
+
+}
+
+.logo-container .company-name-wrapper h1 {
   font-family: var(--ff-heading);
   font-weight: 400;
   color: var(--fc-header);
-  background-color: var(--header-bg-secondary);
 
   font-size: 2.5rem;
   line-height: 2.125rem;
@@ -49,7 +55,6 @@ body {
   text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
 
   padding: 0.5rem 0 0.5rem;
-  margin-bottom: 2.25rem;
   animation: fromrigth 2s forwards;
 }
 
@@ -60,32 +65,25 @@ body {
   text-align: center;
   
   margin: 0.875rem 0 3.75rem;
-
-  border: 1px solid black;
 }
 
 .text-container p {
   max-width: 20rem;
   margin: 0 auto;
-  border: 1px solid purple;
-}
-
-.page {
-  max-width: 20rem;
-  margin: 0 auto;
-  margin-bottom: 3.75rem;
-  
-  border: 1px solid red;
 }
 
 .cards-container {
+  max-width: 20rem;
+  margin: 0 auto;
+  margin-bottom: 3.75rem;
   display: grid;
-  gap: 36px;
-
-  border: 1px solid green;
+  gap: 2.25rem;
+  border: 1px solid purple;
 }
 
 .card {
+object-fit: contain;
+
   position: relative;
 
   animation: frombottom 1s forwards;
@@ -122,14 +120,81 @@ body {
   animation: fromtop 1s .25s backwards;
 }
 
+/* media queries */
 @media (max-width: 350px) {
-  .page,
+  .cards-container,
   .text-container {
     padding: 1rem;
   }
-
 }
 
+@media (min-width: 950px) {
+  body {
+    height: 100vh;
+    background-color: var(--desktop-main-bg);
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+  }
+  
+  header {
+    background-color: var(--header-bg);  
+  }
+
+  .logo-container img {
+    max-width: 13.438rem;
+  }
+  
+  .logo-container .company-name-wrapper h1 {
+    padding: 0.625rem 0;
+    font-size: 3rem;
+    animation: fromleft 2s forwards;
+  }
+
+  .text-container {
+    font-size: 1.5rem;
+    color: var(--fc-header);
+    max-width: 17.188rem;
+    margin: 0 auto;
+    margin-top: 4rem;
+    animation: fromleft 2s forwards;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .cards-container {
+    max-width: 56.438rem;
+    grid-template-areas: "A B" "D B" "D C";
+
+    border: 1px solid black;
+  }
+  
+  .cards-container .card {
+    max-width: 13.75rem;
+    height: fit-content;
+  }
+
+  .cards-container .card:nth-child(1) {
+    grid-area: A;
+  }
+
+  .cards-container .card:nth-child(2) {
+    grid-area: B;
+  }
+
+  .cards-container .card:nth-child(3) {
+    grid-area: C;
+  }
+
+  .cards-container .card:nth-child(4) {
+    grid-area: D;
+  }
+} 
+
+/* keframes */
 @keyframes fromleft {
   0% {
     transform: translateX(-100px);
