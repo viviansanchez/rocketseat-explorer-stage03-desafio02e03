@@ -7,6 +7,7 @@
 :root {
   --ff-heading: 'Staatliches', cursive;
   --ff-text: 'Palanquin', sans-serif;
+  --ff-footer: 'Open Sans', sans-serif;
 
   --header-bg: #8E9AAF;
   --header-bg-secondary: #CBC0D3;
@@ -75,14 +76,13 @@ body {
 .cards-container {
   max-width: 20rem;
   margin: 0 auto;
-  margin-bottom: 3.75rem;
+  margin-bottom: 3.125rem;
   display: grid;
   gap: 2.25rem;
-  border: 1px solid purple;
 }
 
 .card {
-object-fit: contain;
+  object-fit: contain;
 
   position: relative;
 
@@ -120,6 +120,14 @@ object-fit: contain;
   animation: fromtop 1s .25s backwards;
 }
 
+.new-card {
+  display: none;
+}
+
+main .contact-us {
+  display: none;
+}
+
 /* media queries */
 @media (max-width: 350px) {
   .cards-container,
@@ -128,7 +136,7 @@ object-fit: contain;
   }
 }
 
-@media (min-width: 950px) {
+@media (min-width: 750px) {
   body {
     height: 100vh;
     background-color: var(--desktop-main-bg);
@@ -146,16 +154,16 @@ object-fit: contain;
   
   .logo-container .company-name-wrapper h1 {
     padding: 0.625rem 0;
-    font-size: 3rem;
+    font-size: 1.5rem;
     animation: fromleft 2s forwards;
   }
 
   .text-container {
-    font-size: 1.5rem;
     color: var(--fc-header);
     max-width: 17.188rem;
     margin: 0 auto;
     margin-top: 4rem;
+    padding: 1rem;
     animation: fromleft 2s forwards;
   }
 
@@ -163,18 +171,20 @@ object-fit: contain;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
   }
 
   .cards-container {
     max-width: 56.438rem;
-    grid-template-areas: "A B" "D B" "D C";
-
-    border: 1px solid black;
+    grid-template-areas: "A B" 
+    "D B" 
+    "D C";
+    gap: 2rem;
   }
   
   .cards-container .card {
     max-width: 13.75rem;
-    height: fit-content;
+    height: auto;
   }
 
   .cards-container .card:nth-child(1) {
@@ -192,7 +202,66 @@ object-fit: contain;
   .cards-container .card:nth-child(4) {
     grid-area: D;
   }
+
+  .cards-container .new-card:nth-child(5) {
+    grid-area: E;
+  }
+
+  .cards-container .new-card:nth-child(6) {
+    grid-area: F;
+  }
+
+  .cards-container .card h2 {
+    display: none;
+  }
+
+  main .contact-us {
+    display: inherit;
+    font-family: var(--ff-footer);
+    font-weight: 400;
+    color: var(--fc-secondary);
+    font-size: 0.875rem;
+    line-height: 1.75rem;
+    max-width: 37rem;
+  }
+
+  main .contact-us a {
+    text-decoration: none;
+    margin-left: 5px;
+    color: var(--fc-secondary);
+    font-weight: bold;
+  }
 } 
+
+@media (min-width: 950px) {
+  .cards-container {
+    padding: 1rem;
+    grid-template-areas: "A B E"
+    "D B F"
+    "D C F";
+  }
+
+  .new-card {
+    display: inherit;
+    max-width: 13.75rem;
+    height: auto;
+    object-fit: contain;
+
+    animation: frombottom 1s forwards;
+  }
+
+  .new-card a img {
+    filter: brightness(0.7);
+    transition: 200ms;
+  
+    width: 100%;
+  }
+  
+  .new-card a img:hover {
+    filter: brightness(1.2);
+    transform: scale(1.1);
+  }
+}
 
 /* keframes */
 @keyframes fromleft {
@@ -242,13 +311,3 @@ object-fit: contain;
     opacity: 1;
   }
 }
-
-/* possibilidades */
-/* .page .card h2 {
-  font-size: 1rem;
-  line-height: 1.5rem;
-  padding: 0 8px;
-} */
-/* p {
-  font-size: clamp(1rem, 1rem + 5vw, 2rem);
-} */
